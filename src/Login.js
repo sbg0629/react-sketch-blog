@@ -1,13 +1,16 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 function Login() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
     if (username === "admin" && password === "1234") {
       alert("로그인 성공!");
+      navigate("/admin"); // 👉 어드민 페이지로 이동
     } else {
       alert("아이디 또는 비밀번호가 잘못되었습니다.");
     }
@@ -49,9 +52,8 @@ const styles = {
   },
   title: {
     marginBottom: "20px",
-    position: "absolute",
-    top: "20%",
-    },
+    textAlign: "center",
+  },
   form: {
     display: "flex",
     flexDirection: "column",
